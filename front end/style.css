@@ -1,0 +1,275 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url('1155050.jpg');
+}
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  font-weight: bold;
+  background-color: rgb(68, 71, 201);
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+.form-signup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 308px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+#signup {
+  font-weight: bold;
+  background-color: blueviolet;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  bottom: 23px;
+  right: 321px;
+  width: 280px;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+.center {
+  display: none;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  bottom: 15%;
+  right: 25%;
+  position: absolute;
+  font-weight: bold;
+  line-height: 170%;
+  font-size: 30px;
+  border-radius: 25px;
+  border: 3px solid #22b8a4;
+  background-color: aquamarine;
+}
+
+#hello {
+  display: block;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  bottom: 50%;
+  right: 25%;
+  position: absolute;
+  font-weight: bold;
+  line-height: 170%;
+  font-size: 30px;
+  border-radius: 25px;
+  border: 3px solid #22b8a4;
+  background-color: aquamarine;
+}
+
+.center_lst {
+  position: fixed;
+  right: 25%;
+  bottom: 20%;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  font-size: 30px;
+  line-height: 170%;
+  background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+  border: 2px solid #22b8a4;
+  border-radius: 25px;
+  text-align: center;
+}
+
+
+.dep {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  bottom: 50%;
+  right: 25%;
+  position: absolute;
+  font-weight: bold;
+  line-height: 170%;
+  font-size: 30px;
+  border-radius: 25px;
+  border: 3px solid #22b8a4;
+  background-color: aquamarine;
+}
+
+.lst{
+  list-style-type: square;
+  font-weight: bold;
+  border: 1px solid rgb(0, 0, 0);
+  margin-top: -1px; /* Prevent double borders */
+  background-color: lightseagreen;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+  position: relative;
+  right: 3%;
+}
+
+#transaction{
+  max-width: 300px;
+  padding: 10px;
+  background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+  border: 2px solid #22b8a4;
+  z-index: 6;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  bottom: 40%;
+  right: 42%;
+  position: absolute;
+  font-weight: bold;
+  line-height: 170%;
+  font-size: 18px;
+  border-radius: 25px;
+}
+
+#deposit{
+  max-width: 300px;
+  padding: 10px;
+  background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+  border: 2px solid #22b8a4;
+  z-index: 6;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  bottom: 40%;
+  right: 42%;
+  position: absolute;
+  font-weight: bold;
+  line-height: 170%;
+  font-size: 18px;
+  border-radius: 25px;
+}
+
+.pop_bg {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* The Close Button */
+.close {
+  color: #000000;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.img{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.profile_btn {
+  width: 60%;
+  height: 50px;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+  background-size: 200%;
+  font-size: 1.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: .5s;
+  font-family: Helvetica;
+  font-weight: bold;
+}
+
+.profile_btn:hover,
+.profile_btn:focus {
+  color: black;
+  cursor: pointer;
+}
+
+#avatar{
+  width: 250px;
+}

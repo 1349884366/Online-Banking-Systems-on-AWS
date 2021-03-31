@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="script.js"></script>
+</head>
+<body>
+
+<div id = "hello">
+  <h1>
+    Welcome to E-bank
+  </h1>
+
+</div>
+
+<div id="myDIV" class = "center">This is a paragraph.</div>
+
+<div class="pop_bg" id='tran_bg'>
+<div id="transaction" class = "tran">
+  <span class="close" onclick = "closef()">&times;</span>
+  <h1>Transaction</h1>
+  <label for="send"><b>Send to</b></label>
+  <input type="text" placeholder="Enter User ID" name="send" id="send" required>
+
+  <label for="amount"><b>Amount</b></label>
+  <input type="number" placeholder="Enter Amount" name="amount" id="amount" required>
+  <p></p>
+  <button class="send_money" id="send_money" onclick="callTrans(document.getElementById('send').value,document.getElementById('amount').value)">Comfirm</button>
+</div>
+</div>
+
+
+<div class="pop_bg" id='dep_bg'>
+  <div id="deposit" class = "dep">
+    <span class="close" onclick = "closef()">&times;</span>
+    <h1>Deposit</h1>
+    <label for="amount"><b>Amount</b></label>
+    <input type="number" placeholder="Enter Amount" name="amount" id="amount" required>
+
+    <p>Attachment
+    <input type="file" placeholder="Attachment" name="attachment" id="attachment" required></p>
+    <p></p>
+    <button class="send_money" id="send_money" onclick="callDeposit(document.getElementById('amount').value,document.getElementById('attachment').value)">Comfirm</button>
+  </div>
+  </div>
+
+<div class="pop_bg" id='hist_bg'>
+<div class = "center_lst" id = "hist_lst">
+  <span class="close" onclick = "closef()">&times;</span>
+<ul>
+<div>
+<li class="lst" id ="lst1">
+  Coffee 1
+</li>
+<li class="lst" id ="lst2">
+  Coffee 2
+</li>
+<li class="lst" id ="lst3">
+  Coffee 3
+</li>
+<li class="lst" id ="lst4">
+  Coffee 4
+</li>
+<li class="lst" id ="lst5">
+  Coffee 5
+</li>
+<li class="lst" id ="lst6">
+  Coffee 6
+</li>
+<li class="lst" id ="lst7">
+  Coffee 7
+</li>
+</ul>
+<button type="button" id = "next" onclick = "prev()">Prev Page</button>
+<button type="button" id = "prev" onclick = "next()">Next Page</button>
+</div>
+</div>
+
+<button type="button" id="signup" onclick="openFormSignup()">Sign Up</button>
+<div class="form-signup" id="signForm">
+  <form class="form-container">
+    <h1>Sign Up</h1>
+
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Name" name="name" id="signupname" required>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="signupEmail" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="signupPassword" required>
+
+    <label for="confirm"><b>Confirm Password</b></label>
+    <input type="password" placeholder="Confirm Password" name="confirm" id="confirmPassword" required>
+    
+    <button type="button" class="btn" onclick="callSignup(document.getElementById('signupname').value,document.getElementById('signupEmail').value,document.getElementById('signupPassword').value,document.getElementById('confirmPassword').value)">Sign Up</button>
+    <button type="button" class="btn cancel" onclick="closeFormSignup()">Close</button>
+  </form>
+</div>
+
+<button class="open-button" id="open-button" onclick="openForm()">Login</button>
+<div class="form-popup" id="myForm">
+  <form class="form-container">
+    <h1>Login</h1>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="Email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="Password" required>
+    
+    <button type="button" class="btn" onclick="callLogin(document.getElementById('Email').value,document.getElementById('Password').value)">Login</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+
+</body>
+</html>
