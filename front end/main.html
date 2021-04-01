@@ -35,13 +35,13 @@
   <div id="deposit" class = "dep">
     <span class="close" onclick = "closef()">&times;</span>
     <h1>Deposit</h1>
-    <label for="amount"><b>Amount</b></label>
-    <input type="number" placeholder="Enter Amount" name="amount" id="amount" required>
+    <label for="amount_d"><b>Amount</b></label>
+    <input type="number" placeholder="Enter Amount" name="amount_d" id="amount_d" required>
 
-    <p>Attachment
-    <input type="file" placeholder="Attachment" name="attachment" id="attachment" required></p>
+    <label for="Attachment"><b>Attachment</b></label>
+    <input type="text" placeholder="Attachment" name="attachment" id="attachment" required>
     <p></p>
-    <button class="send_money" id="send_money" onclick="callDeposit(document.getElementById('amount').value,document.getElementById('attachment').value)">Comfirm</button>
+    <button class="send_money" id="send_money" onclick="callDeposit(document.getElementById('amount_d').value,document.getElementById('attachment').value)">Comfirm</button>
   </div>
   </div>
 

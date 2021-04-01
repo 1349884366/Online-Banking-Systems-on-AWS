@@ -3,6 +3,7 @@ var url = "https://i40c1sj0qc.execute-api.us-east-1.amazonaws.com/dev";
 // define login api
 var callLogin = (Email,Password)=>{
     // instantiate a headers object
+    localStorage.email = Email;
     var myHeaders = new Headers();
     // add content type header to object
     myHeaders.append("Content-Type", "application/json");
@@ -91,17 +92,18 @@ var logout = ()=>{
     document.getElementById("signup").style.display = "block";
     document.getElementById("hello").style.display = "block";
     document.getElementById("myDIV").style.display = "none"
+    localStorage.clear();
 }
 
 // define Trans api
 var callTrans = (reciever,money)=>{
     var auth_key = localStorage.auth;
-    var sender = localStorage.lname;
+    var sender = localStorage.email;
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify({"Opeartion": "Trans","Sender":sender, "Reciever":reciever, "Money":money, "Auth_key":auth_key});
     var requestOptions = {
-        method: 'PUT',
+        method: 'POST',
         headers: myHeaders,
         body: raw,
         redirect: 'follow'
@@ -118,12 +120,13 @@ var trans = (body) =>{
 // define Deposit api
 var callDeposit = (money,attachment )=>{
     var auth_key = localStorage.auth;
-    var UserID = localStorage.lname;
+    var UserID = localStorage.email;
+    var money = money;
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify({"Opeartion": "Deposit","UserID":UserID, "Money":money, "Auth_key":auth_key, "Attachment ":attachment});
+    var raw = JSON.stringify({"Opeartion": "Deposit","UserID":UserID, "Money":money, "Auth_key":auth_key, "Attachment":attachment});
     var requestOptions = {
-        method: 'PUT',
+        method: 'POST',
         headers: myHeaders,
         body: raw,
         redirect: 'follow'
