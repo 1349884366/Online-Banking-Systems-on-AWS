@@ -101,7 +101,7 @@ body {
   margin: auto;
   width: 50%;
   padding: 10px;
-  bottom: 15%;
+  bottom: 10%;
   right: 25%;
   position: absolute;
   font-weight: bold;
@@ -272,4 +272,9 @@ body {
 
 #avatar{
   width: 250px;
+}
+
+.div_lst{
+  text-align: left;
+  text-indent: 20px
 }

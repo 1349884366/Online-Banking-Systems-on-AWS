@@ -60,12 +60,75 @@ def lambda_handler(event, context):
     elif (operation == 'Trans'):
         return trans(event)
     elif (operation == 'Deposit'):
-      return deposit(event)
+        return deposit(event)
+    elif (operation == 'Activities'):
+        return act(event)
+    elif (operation == 'TransHis'):
+        return TransHis(event)
     # else:
     #     return{
     #     'statusCode': 400,
     #     'body': None
     #     }
+    
+def act(data):
+#get input
+    email = data['Email']
+    Auth_key = data['Auth_key']
+#check auth key
+    de_auth = decode(key,Auth_key)
+    tmp = de_auth.split("+", 1)
+    auth_data = tmp[1]
+    date_2 = datetime.datetime.strptime(auth_data, '%Y-%m-%d %H:%M:%S.%f')
+    time_delta = (date_now - date_2)
+    total_seconds = time_delta.total_seconds()
+    hours = total_seconds/3600
+#get the Activities
+    if (email == tmp[0] and hours <= 8 ):
+        response_act = act_table.query(
+            KeyConditionExpression=Key('Activity_ID').eq(email))
+        act_lst = []
+        for i in response_act['Items']:
+            act_lst.append(("Date: "+str(i['Time']).split(".")[0]+" Opeartion: "+str(i['Opeartion']) ))
+        return {
+            'statusCode': 200,
+            'body': json.dumps({"Activities":json.dumps(act_lst)})
+            }
+    else:
+        return{
+        'statusCode': 401,
+        'body': json.dumps({"Description": "Unauthorized"})
+        }
+        
+def TransHis(data):
+#get input
+    email = data['Email']
+    Auth_key = data['Auth_key']
+#check auth key
+    de_auth = decode(key,Auth_key)
+    tmp = de_auth.split("+", 1)
+    auth_data = tmp[1]
+    date_2 = datetime.datetime.strptime(auth_data, '%Y-%m-%d %H:%M:%S.%f')
+    time_delta = (date_now - date_2)
+    total_seconds = time_delta.total_seconds()
+    hours = total_seconds/3600
+#get the Transactions
+    if (email == tmp[0] and hours <= 8 ):
+        response_trans = trans_table.query(
+            KeyConditionExpression=Key('Transaction_ID').eq(email))
+        trans_lst = []
+        for i in response_trans['Items']:
+            trans_lst.append(("Date: "+str(i['Time']).split(".")[0] +"   Opeartion: "+ str(i['Sender'])+" transfer "+str(i['Money'])+"$ to "+str(i['Reciever']) ))
+        return {
+            'statusCode': 200,
+            'body': json.dumps({"Transcations":json.dumps(trans_lst)})
+            }
+    else:
+        return{
+        'statusCode': 401,
+        'body': json.dumps({"Description": "Unauthorized"})
+        }
+    
     
 #define login function
 def login(data):
@@ -81,7 +144,10 @@ def login(data):
     auth_str = str(user['Email']) + "+" +str(date_now)
     en_auth = encode(key,auth_str)
     de_auth = decode(key,en_auth)
+    
+    
     if user['Password'] == password:
+        
         name = user['Name']
         balance = user['Balance']
         return {
