@@ -169,6 +169,7 @@ var deposit = (event) =>{
     }  
 }
 
+// define View Transactions API
 var callHis = ()=>{
     var auth_key = localStorage.auth;
     var sender = localStorage.email;
@@ -186,6 +187,7 @@ var callHis = ()=>{
     .then(result => His(result))
     .catch(error => console.log('error', error));
 }
+// define View Transactions function
 var His = (event) =>{
     msg = JSON.parse(event).body;
     body = JSON.parse(msg);
@@ -196,6 +198,7 @@ var His = (event) =>{
     openFormHistory();
 }
 
+// define View Activities API
 var callAct = ()=>{
     var auth_key = localStorage.auth;
     var sender = localStorage.email;
@@ -213,6 +216,7 @@ var callAct = ()=>{
     .then(result => Act(result))
     .catch(error => console.log('error', error));
 }
+// define View Activities function
 var Act = (event) =>{
     msg = JSON.parse(event).body;
     body = JSON.parse(msg);
@@ -224,7 +228,7 @@ var Act = (event) =>{
 }
 
 
-//define the function for transaction history
+//define the function for view list
 function openFormHistory(){
     lst = localStorage.lst.split(",");
     x = document.getElementsByClassName("lst");
@@ -233,6 +237,8 @@ function openFormHistory(){
     }
     document.getElementById("hist_bg").style.display = "block";
 }
+
+//define the function for next page
 function next(){
     if ( (parseInt(localStorage.page) + 7) >= (parseInt(localStorage.lst_len)) ){
         alert("This is the last page")
@@ -242,7 +248,7 @@ function next(){
         openFormHistory()
     }
 }
-
+//define the function for prev page
 function prev(){
     if ( (parseInt(localStorage.page) - 7) < 0 ){
         alert("This is the first page")
