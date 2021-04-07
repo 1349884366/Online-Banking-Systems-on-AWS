@@ -33,7 +33,7 @@ This section should list any major frameworks that you built your project using.
     1. Next to "Table name" type in User.
     1. In the "Primary Key" field type in User_ID.
     1. Click the **blue** "Create" button.
-    1. **Copy the table's "Amazon Resource Name (ARN)"** from the right hand panel (you will need it later on in part 2).
+    1. **Copy the table's "Amazon Resource Name (ARN)"** from the right hand panel (you will need it later in part 2).
     #### Create the Activities Table
     1. Click the **blue** "Create table" button.
     1. Next to "Table name" type in Activities.
@@ -45,7 +45,7 @@ This section should list any major frameworks that you built your project using.
     1. Check the "Add sort key" checkbox and type "Time" in the field.
     1. Click the **blue** "Add index" button.
     1. Click the **blue** "Create" button.
-    1. **Copy the table's "Amazon Resource Name (ARN)"** from the right hand panel (you will need it later on in part 2).
+    1. **Copy the table's "Amazon Resource Name (ARN)"** from the right hand panel (you will need it later in part 2).
     #### Create the Transactions Table
     1. Click the **blue** "Create table" button.
     1. Next to "Table name" type in Transactions.
@@ -57,7 +57,7 @@ This section should list any major frameworks that you built your project using.
     1. Check the "Add sort key" checkbox and type "Time" in the field.
     1. Click the **blue** "Add index" button.
     1. Click the **blue** "Create" button.
-    1. **Copy the table's "Amazon Resource Name (ARN)"** from the right hand panel (you will need it later on in part 2).
+    1. **Copy the table's "Amazon Resource Name (ARN)"** from the right hand panel (you will need it later in part 2).
 
 ### Part 2: BUILD SERVERLESS FUNCTION
 
