@@ -1,4 +1,4 @@
-// define aws fetch url
+// define API Invoke URL
 var url = "https://i40c1sj0qc.execute-api.us-east-1.amazonaws.com/dev";
 // define login api
 var callLogin = (Email,Password)=>{
