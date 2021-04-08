@@ -1,29 +1,30 @@
 # Online-Banking-Systems-on-AWS
 
 ## About The Project
+This is a online bank system power by AWS Cloud Platform. It provides the main functions required by the online banking system, such as user login, transfer, deposit, etc.
 
-![GitHub Logo](/images/1.PNG)
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+![video](/images/video.gif)
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+### System Architecture
+![Main page](/images/System_Architecture.PNG)
+### Key Features
+* AWS Cloud Platform 
+* User authorization
+* ACID properties for database
+* Data encryption
 
 ### Built With
-
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 * [AWS S3](https://console.aws.amazon.com/s3/)
 * [AWS DynamoDB](https://console.aws.amazon.com/dynamodb/home)
 * [AWS Lambda](https://console.aws.amazon.com/lambda/)
 * [AWS API Gateway](https://console.aws.amazon.com/apigateway/main/)
+* [AWS KMS](https://console.aws.amazon.com/kms)
 
 ## Getting Started
+
+### Prerequisites
+To deploy this application, you need an **AWS** account.
 
 ### Part 1: CREATE DYNAMODB DATABASE.
 1. Log into the Amazon [AWS DynamoDB Console](https://console.aws.amazon.com/dynamodb/home).
