@@ -2,7 +2,7 @@
 
 ## About The Project
 This is a online bank system power by AWS Cloud Platform. It provides the main functions required by the online banking system, such as user login, transfer, deposit, etc.
-* [Live Demo](http://mydemo123.com.s3-website-us-west-2.amazonaws.com/)
+* [Live Demo](https://emon3y.com/)
 
 ![video](/documents/images/video.gif)
 
