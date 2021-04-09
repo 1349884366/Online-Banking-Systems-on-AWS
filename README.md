@@ -2,7 +2,7 @@
 
 ## About The Project
 This is a online bank system power by AWS Cloud Platform. It provides the main functions required by the online banking system, such as user login, transfer, deposit, etc.
-
+* [Live Demo](http://mydemo123.com.s3-website-us-west-2.amazonaws.com/)
 
 ![video](/documents/images/video.gif)
 
@@ -32,3 +32,12 @@ To deploy this application, you need an **AWS** account.
 git clone https://github.com/1349884366/Online-Banking-Systems-on-AWS.git
 ```
 2. Follow the instructions in the [tutorial](/documents/Tutorial.md).
+
+## Roadmap
+* [High level design](/documents/Online_Banking_Systems_on_AWS.pdf)
+* [Low level design](/documents/Low_Level_Design.pdf)
+
+## Document
+* [High level design](/documents/Online_Banking_Systems_on_AWS.pdf)
+* [Low level design](/documents/Low_Level_Design.pdf)
+* [Tutorial](/documents/Tutorial.md)
