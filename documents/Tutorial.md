@@ -47,7 +47,7 @@
 1. In the "Execution role" box **click on the role**. A new browser tab will open.
 1. Click on "Add inline policy" on the right of the "Permissions policies" box.
 1. Click on the "JSON" tab.
-1. Paste the following policy in the text area, **taking care to replace your table's ARN(From part 1) in the "Resource" field on line 16,17,18**:
+1. Paste the following policy in the text area, **taking care to replace your table's ARN(From part 1) in the "Resource" field on line 16-21**:
     ```json
     {
     "Version": "2012-10-17",
@@ -125,3 +125,17 @@ The Create bucket wizard opens.
 1. Choose **Save changes**.
 1. Under **Static website hosting**, note the **Endpoint**.
 The **Endpoint** is the Amazon S3 website endpoint for your bucket. After you finish configuring your bucket as a static website, you can use this endpoint to test your website.
+
+## Part 5: Creating symmetric CMK FOR ENCRYPTION
+1. Log into the [AWS Key Management Service Console](https://console.aws.amazon.com/kms). 
+1. To change the AWS Region, use the Region selector in the upper-right corner of the page.
+1. In the navigation pane, choose **Customer managed keys**.
+1. Choose **Create key**.
+1. For Key type choose **Symmetric**.
+1. Choose **Next**.
+1. Type in the alias of CMK "**eBankCMK**".
+1. Choose **Next**.
+1. Choose **Next**.
+1. Type "eBankFunction" in the input box, and then select the eBankFunction role to allow this lambda function to use this CMK for encryption operations.
+1. Choose **Next**.
+1. Choose **Finish** to create the CMK.
