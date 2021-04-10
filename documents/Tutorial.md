@@ -123,8 +123,11 @@ The Create bucket wizard opens.
 1. Under **Static website hosting**, choose **Enable**.
 1. In **Index document**, enter **main.html**.
 1. Choose **Save changes**.
+1. Choose **Permissions** tab of the s3 bucket
+1. Click **Edit** button in the **Block public access (bucket settings)** block.
+1. Check the following checkbox![policy](/images/policy.PNG)
 1. Under **Static website hosting**, note the **Endpoint**.
-The **Endpoint** is the Amazon S3 website endpoint for your bucket. After you finish configuring your bucket as a static website, you can use this endpoint to test your website.
+The **Endpoint** is the Amazon S3 website endpoint for your bucket. After you finish configuring your bucket as a static website, you can use this endpoint to test your website.test your website.
 
 ## Part 5: Creating symmetric CMK FOR ENCRYPTION
 1. Log into the [AWS Key Management Service Console](https://console.aws.amazon.com/kms). 
