@@ -125,7 +125,7 @@ The Create bucket wizard opens.
 1. Choose **Save changes**.
 1. Choose **Permissions** tab of the s3 bucket
 1. Click **Edit** button in the **Block public access (bucket settings)** block.
-1. Check the following checkbox![policy](/images/policy.PNG)
+1. Check the following checkbox![policy](/documents/images/policy.PNG)
 1. Click **Edit** button in the **Bucket policy** block.
 1. Paste the following policy in the text area **taking care to replace your Bucket NAME in the "Resource" field on line 9**:
     ```json
