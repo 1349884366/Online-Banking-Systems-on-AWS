@@ -42,7 +42,7 @@
 1. Click on the **orange** "Create Function" button.
 1. Open the **Upload from** drop-down menu.
 1. Click **.zip file** button.
-1. Click the **Upload** button, and then select "back-end.zip" to upload.
+1. Click the **Upload** button, and then select "lambda.zip" to upload.
 1. Click on the **"Permissions" tab**.
 1. In the "Execution role" box **click on the role**. A new browser tab will open.
 1. Click on "Add inline policy" on the right of the "Permissions policies" box.
@@ -106,7 +106,7 @@
 
 ## Part 4: CREATE WEB APP
 
-1. Open the **script.js** file under the **fronted-end** directory.
+1. Open the **script.js** file under the **s3** directory.
 1. **Replace the API Invoke URL on Line 2(From part 3)**
 1. Save the file.
 1. Log into the Amazon [AWS S3 Console](https://console.aws.amazon.com/s3/).
@@ -116,7 +116,7 @@ The Create bucket wizard opens.
 1. In **Region**, choose the AWS Region where you want the bucket to reside.
 1. Choose **Create bucket**.
 1. In the **Buckets** list, choose the name of the bucket that you just created.
-1. Upload all files under the **fronted end** directory to this bucket.
+1. Upload all files under the **s3** directory to this bucket.
 1. Choose **Properties**.
 1. Under **Static website hosting**, choose **Edit**.
 1. Choose **Use this bucket to host a website**.
