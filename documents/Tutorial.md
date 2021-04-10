@@ -126,6 +126,23 @@ The Create bucket wizard opens.
 1. Choose **Permissions** tab of the s3 bucket
 1. Click **Edit** button in the **Block public access (bucket settings)** block.
 1. Check the following checkbox![policy](/images/policy.PNG)
+1. Click **Edit** button in the **Bucket policy** block.
+1. Paste the following policy in the text area **taking care to replace your Bucket NAME in the "Resource" field on line 9**:
+    ```json
+    {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::[YOUR_BUCKET_NAME]/*"
+        }
+    ]
+    }
+    ```
+1. Click **orange** Save changes button.
 1. Under **Static website hosting**, note the **Endpoint**.
 The **Endpoint** is the Amazon S3 website endpoint for your bucket. After you finish configuring your bucket as a static website, you can use this endpoint to test your website.test your website.
 
