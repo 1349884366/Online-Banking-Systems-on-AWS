@@ -17,6 +17,11 @@ def login(data):
     response = user_table.query(
     KeyConditionExpression=Key('User_ID').eq(email)
     )
+    if len(response['Items']) == 0:
+        return{
+        'statusCode': 401,
+        'body': json.dumps({"Description": "Email not exists"})
+        }
     user = response['Items'][0]
     date_now = datetime.datetime.now()
     auth_str = str(user['Email']) + "+" +str(date_now)
@@ -32,7 +37,7 @@ def login(data):
     else:
         return{
         'statusCode': 401,
-        'body': None
+        'body': json.dumps({"Description": "Password does not match"})
         }
         
 #define signup function
