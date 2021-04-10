@@ -9,15 +9,6 @@ import datetime
 import base64
 
 import APIfunctions
-
-
-# store the current time in a human readable format in a variable
-date_time_str = '2021-03-31 00:43:13.539780'
-date_2 = datetime.datetime.strptime(date_time_str, '%Y-%m-%d %H:%M:%S.%f')
-date_now = datetime.datetime.now()
-time_delta = (date_now - date_2)
-total_seconds = time_delta.total_seconds()
-hours = total_seconds/3600
  
 
 # create a DynamoDB object using the AWS SDK

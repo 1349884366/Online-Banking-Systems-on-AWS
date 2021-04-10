@@ -2,17 +2,19 @@ import datetime
 import boto3
 from boto3.dynamodb.conditions import Key
 import base64
+import uuid
 
 session = boto3.session.Session()
 kms = session.client('kms')
 user_table = boto3.resource('dynamodb').Table('User')
 dynamodb_c = boto3.client('dynamodb')
+key = 'alias/eBankCMK'
 
 
 def encryption(data):
     data_e = kms.encrypt(
     # The identifier of the CMK to use for encryption. You can use the key ID or Amazon Resource Name (ARN) of the CMK, or the name or ARN of an alias that refers to the CMK.
-    KeyId='arn:aws:kms:us-east-1:122476665956:key/f1e3ac2b-0c2b-4779-a75e-391b502aedfe',
+    KeyId=key,
     # The data to encrypt.
     Plaintext=data,)
     binary_data = data_e[u'CiphertextBlob']
@@ -44,7 +46,8 @@ def db_trans(data):
     sender = data['Sender']
     reciever = data['Reciever']
     money = data['Money']
-    operation_str = str(sender)+" transfer "+str(money)+"$ to "+str(reciever)
+    operation_str = " Transfer "+str(money)+"$ to "+str(reciever)
+    operation_str_reciever = "Get " + str(money)+"$ from "+str(sender)
 #get the database version
     response_s = user_table.query(ConsistentRead=True,KeyConditionExpression=Key('User_ID').eq(sender))
     response_r = user_table.query(ConsistentRead=True,KeyConditionExpression=Key('User_ID').eq(reciever))
@@ -54,6 +57,9 @@ def db_trans(data):
     r_v = response_r['Items'][0]['Ver']
     new_rv= str(int(r_v) + 1)
     r_b = str(int(response_r['Items'][0]['Balance'])+int(money))
+    uuid1 = str(uuid.uuid4())
+    uuid2 = str(uuid.uuid4())
+    uuid3 = str(uuid.uuid4())
     try:
         resp = dynamodb_c.transact_write_items(
             TransactItems=[
@@ -61,7 +67,7 @@ def db_trans(data):
                     "Put": {
                         "TableName": "Transactions",
                         "Item": {
-                            "Transaction_ID": {"S": sender},
+                            "Transaction_ID": {"S": uuid1},
                             "Sender": {"S": sender},
                             "Reciever": {"S": reciever},
                             "Money": {"S": money},
@@ -73,9 +79,20 @@ def db_trans(data):
                     "Put": {
                         "TableName": "Activities",
                         "Item": {
-                            "Activity_ID": {"S": sender},
+                            "Activity_ID": {"S": uuid2},
                             "User": {"S": sender},
                             "Opeartion": {"S": operation_str},
+                            "Time": {"S": datetime.datetime.now().isoformat()}
+                        },
+                    },
+                },
+                {
+                    "Put": {
+                        "TableName": "Activities",
+                        "Item": {
+                            "Activity_ID": {"S": uuid3},
+                            "User": {"S": reciever},
+                            "Opeartion": {"S": operation_str_reciever},
                             "Time": {"S": datetime.datetime.now().isoformat()}
                         },
                     },
@@ -119,12 +136,13 @@ def db_dep(data):
 #set up the data
     user = data['UserID']
     money = data['Money']
-    operation_str = "deposit "+str(money)+"$"
+    operation_str = "Deposit "+str(money)+"$"
 #get the database version
     response = user_table.query(ConsistentRead=True,KeyConditionExpression=Key('User_ID').eq(user))
     ver = response['Items'][0]['Ver']
     new_ver= str(int(ver) + 1)
     new_b = str(int(response['Items'][0]['Balance'])+int(money))
+    uuid1 = str(uuid.uuid4())
     try:
         resp = dynamodb_c.transact_write_items(
             TransactItems=[
@@ -132,7 +150,7 @@ def db_dep(data):
                     "Put": {
                         "TableName": "Activities",
                         "Item": {
-                            "Activity_ID": {"S": user},
+                            "Activity_ID": {"S": uuid1},
                             "User": {"S": user},
                             "Opeartion": {"S": operation_str},
                             "Time": {"S": datetime.datetime.now().isoformat()}

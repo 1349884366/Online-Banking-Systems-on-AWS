@@ -3,12 +3,10 @@ from boto3.dynamodb.conditions import Key
 import datetime
 import utilities
 import json
-import uuid
 
 user_table = boto3.resource('dynamodb').Table('User')
 act_table = boto3.resource('dynamodb').Table('Activities')
 trans_table = boto3.resource('dynamodb').Table('Transactions')
-uuid = str(uuid.uuid4())
 
 #define login function
 def login(data):
@@ -147,7 +145,8 @@ def act(data):
 #get the Activities
     if (validation):
         response_act = act_table.query(
-            KeyConditionExpression=Key('Activity_ID').eq(email))
+            IndexName="User-Time-index",
+            KeyConditionExpression=Key('User').eq(email))
         act_lst = []
         for i in response_act['Items']:
             act_lst.append(("Date: "+str(i['Time']).split(".")[0]+" Opeartion: "+str(i['Opeartion']) ))
@@ -171,7 +170,8 @@ def TransHis(data):
 #get the Transactions
     if (validation):
         response_trans = trans_table.query(
-            KeyConditionExpression=Key('Transaction_ID').eq(email))
+            IndexName="Sender-Time-index",
+            KeyConditionExpression=Key('Sender').eq(email))
         trans_lst = []
         for i in response_trans['Items']:
             trans_lst.append(("Date: "+str(i['Time']).split(".")[0] +"   Opeartion: "+ str(i['Sender'])+" transfer "+str(i['Money'])+"$ to "+str(i['Reciever']) ))
